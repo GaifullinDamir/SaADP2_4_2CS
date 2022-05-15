@@ -119,7 +119,7 @@ namespace SaADP2_4_1CS
                 Add(ref hashTable, hash, keys[i], ref delta);
                 compares += delta;
             }
-            Console.WriteLine($"Количество сравнений при добавлении {keys.Length} элементов: {delta}" );
+            Console.WriteLine($"Количество сравнений при добавлении {keys.Length} элементов: {compares}" );
         }
         public static void PrintHashTable(string[] hashTable)
         {
@@ -200,7 +200,11 @@ namespace SaADP2_4_1CS
         {
             for (int i = 0; i < m; i++)
             {
-                hashTable[i] = keys[i] = null;
+                hashTable[i] = null;
+            }
+            for (int j = 0; j < m - 2; j++)
+            {
+                keys[j] = null;
             }
             hashTable = keys = null;
         }
