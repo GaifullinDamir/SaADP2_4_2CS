@@ -6,11 +6,12 @@ namespace SaADP2_4_1CS
     class Program
     {
         private const int m = 10;  //Размер массива
-        private static int numbOfItems = 0;
+        private static int amount = 0;
 
         static void Main(string[] args)
         {
-            string[] keys = { "Алексей", "Константин", "Евгений", "Ислам", "Данис", "Павел", "Егор", "Кирилл"};
+            string[] keys = { "Алексей", "Константин", "Евгений", "Ислам", "Данис", "Павел", "Егор", "Кирилл" };
+            //string[] keys = { "WHILE", "AND", "RETURN", "STRUct", "OUT", "Ref", "FOREACH", "PROGRAM", "THEN", "Class" };
             string[] hashTable = new string[m];
             Interface(ref hashTable, ref keys);
         }
@@ -31,7 +32,7 @@ namespace SaADP2_4_1CS
             if (hashTable[hash] == null)
             {
                 hashTable[hash] = key;
-                numbOfItems++;
+                amount++;
                 return;
             }
             compares++;
@@ -44,10 +45,8 @@ namespace SaADP2_4_1CS
                 int index = SearchEmpty(hashTable, key, hash, ref compares);
                 if (index == -1) { return; }
                 hashTable[index] = key;
-                numbOfItems++;
+                amount++;
             }
-            
-            
         }
 
         public static int SearchEmpty(string[] hashTable, string key, int hash, ref int compares)
@@ -84,7 +83,7 @@ namespace SaADP2_4_1CS
                 else
                 {
                     int j = -1;
-                    for (int k = 0; k < m - 1; k++)
+                    for (int k = 0; k < m - 2; k++)
                     {
                         j = ((hash + k) % m) + 1;
                         if(j == m)
@@ -125,7 +124,11 @@ namespace SaADP2_4_1CS
         {
             for (int i = 0; i < m; i++)
             {
-                Console.Write($" | {i} - {hashTable[i]}");
+                if(hashTable[i] != null)
+                {
+                    Console.Write($" | {i} - {hashTable[i]}");
+                }
+                
             }
             Console.WriteLine();
         }
@@ -163,7 +166,7 @@ namespace SaADP2_4_1CS
 
         public static void CaseAdd(ref string[] hashTable)
         {
-            if(numbOfItems != m)
+            if(amount != m)
             {
                 int compares = 0;
                 Console.Write("Введите ключ для добавления: ");
@@ -181,7 +184,7 @@ namespace SaADP2_4_1CS
         }
         public static void CaseSearch(string[] hashTable)
         {
-            if (!(hashTable[0] == null))
+            if (!(amount == 0))
             {
                 int compares = 0;
                 Console.Write("Введите ключ для поиска: ");
