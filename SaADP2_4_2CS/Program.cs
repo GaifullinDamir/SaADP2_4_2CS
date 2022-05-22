@@ -193,7 +193,7 @@ namespace SaADP2_4_1CS
                 int index = Search(hashTable, hash, key, ref compares);
                 if (index == -1) { Console.WriteLine($"Такого ключа нет. Количество сравнений: {compares}"); }
                 else
-                    Console.WriteLine($"Ключ {key} в хеш таблице имеет место {index}. Количесвто сравнений: {compares}");
+                    Console.WriteLine($"Ключ {key} в хеш таблице имеет место {index}. Количество сравнений: {compares}");
             }
             else
                 Console.WriteLine("Хеш таблица пуста.");
